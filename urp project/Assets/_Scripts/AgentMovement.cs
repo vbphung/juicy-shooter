@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class AgentMovement : MonoBehaviour
 {
     [field: SerializeField] public MovementDataSO movementData { get; private set; }
-    protected Rigidbody2D rigidbody;
+    [field: SerializeField] public UnityEvent<float> OnVelocityChanged { get; set; }
 
+    protected Rigidbody2D rigidbody;
     protected float currentSpeed = 0;
     protected Vector2 currentDirection = new Vector2(0, 0);
 
@@ -17,6 +19,7 @@ public class AgentMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rigidbody.velocity = currentDirection.normalized * currentSpeed;
+        OnVelocityChanged?.Invoke(currentSpeed);
     }
 
     public void MoveAgent(Vector2 moveInput)
