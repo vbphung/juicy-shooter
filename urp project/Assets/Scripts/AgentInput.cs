@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AgentInput : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [field: SerializeField] public UnityEvent<Vector2> OnMovementKeyPress { get; set; }
+
+    private void Update()
     {
-        
+        GetMovementInput();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void GetMovementInput()
     {
-        
+        OnMovementKeyPress?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
     }
 }
