@@ -29,7 +29,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.297, y: -0.145, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1604575445}
   m_Father: {fileID: 1792343269}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -109,6 +110,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ff1778ec9fb41d5a75c449ed947125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  muzzle: {fileID: 1604575444}
+  weaponData: {fileID: 11400000, guid: c911b4439a73c470d9c588db25d56aba, type: 2}
+  ammo: 30
+  reloadCoroutine: 0
+  <OnShoot>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnShootNoAmmo>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1604575444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1604575445}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1604575445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604575444}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 77647625}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1792343267
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1440164042253776223}
   - component: {fileID: 2707605886559881969}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Movement Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,8 +238,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.025138037, y: -0.11408568}
-  m_Size: {x: 0.6944863, y: 0.30775383}
+  m_Offset: {x: 0, y: -0.3}
+  m_Size: {x: 0.70000005, y: 0.5}
   m_Direction: 1
 --- !u!1 &7863208396154034379
 GameObject:
@@ -212,7 +253,7 @@ GameObject:
   - component: {fileID: 7863208396154034390}
   - component: {fileID: 7863208396154034377}
   - component: {fileID: 7863208396154034376}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,8 +356,8 @@ MonoBehaviour:
   <OnFireButtonPressed>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6473900441464519822}
-        m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
+      - m_Target: {fileID: 1792343268}
+        m_TargetAssemblyTypeName: AgentWeapon, Assembly-CSharp
         m_MethodName: Shoot
         m_Mode: 1
         m_Arguments:
@@ -330,8 +371,8 @@ MonoBehaviour:
   <OnFireButtonReleased>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6473900441464519822}
-        m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
+      - m_Target: {fileID: 1792343268}
+        m_TargetAssemblyTypeName: AgentWeapon, Assembly-CSharp
         m_MethodName: StopShoot
         m_Mode: 1
         m_Arguments:
@@ -641,7 +682,7 @@ MonoBehaviour:
   - {x: -0.25374216, y: 0.3768919, z: 0}
   m_ShapePathHash: 1808417512
   m_Mesh: {fileID: 0}
-  m_InstanceId: -110006
+  m_InstanceId: 39206
 --- !u!1 &8708989984709746976
 GameObject:
   m_ObjectHideFlags: 0

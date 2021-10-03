@@ -11,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Bullet
+  - Player
+  - Enemy
+  - Obstacle
+  - Enemy Movement Collider
+  - Player Movement Collider
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 281623535
+    locked: 0
+  - name: Bullet
+    uniqueID: 2005402613
     locked: 0

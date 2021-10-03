@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D))]
 public class AgentMovement : MonoBehaviour
 {
-    [field: SerializeField] public MovementDataSO MovementData { get; private set; }
+    [field: SerializeField] public MovementDataSO MovementData { get; protected set; }
     [field: SerializeField] public UnityEvent<float> OnVelocityChanged { get; set; }
 
     protected Rigidbody2D rigidbody;

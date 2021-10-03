@@ -907,7 +907,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: 0
     aniso: 2
-    mipBias: -100
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 0
@@ -928,6 +928,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -1227,8 +1229,8 @@ TextureImporter:
         y: 343
         width: 11
         height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1248,8 +1250,8 @@ TextureImporter:
         y: 343
         width: 15
         height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1269,8 +1271,8 @@ TextureImporter:
         y: 343
         width: 18
         height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1290,8 +1292,8 @@ TextureImporter:
         y: 343
         width: 20
         height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
