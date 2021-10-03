@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Player Movement Data
   m_EditorClassIdentifier: 
   <MaxSpeed>k__BackingField: 10
-  <Acceleration>k__BackingField: 5
+  <Acceleration>k__BackingField: 30
   <Deacceleration>k__BackingField: 50
