@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour
     public bool FullAmmo { get => Ammo >= weaponData.AmmoCapacity; }
     public int Ammo { get => ammo; set => ammo = Mathf.Clamp(value, 0, weaponData.AmmoCapacity); }
 
-    protected bool isShooting = true;
+    protected bool isShooting = false;
 
     private void Start()
     {
@@ -28,6 +28,7 @@ public class Weapon : MonoBehaviour
         UseWeapon();
     }
 
+    #region Trigger
     public void TryShooting()
     {
         isShooting = true;
@@ -42,7 +43,9 @@ public class Weapon : MonoBehaviour
     {
         Ammo += reload;
     }
+    #endregion
 
+    #region UseWeapon
     private void UseWeapon()
     {
         if (isShooting && !reloadCoroutine)
@@ -67,7 +70,7 @@ public class Weapon : MonoBehaviour
 
     private void ShootBullet()
     {
-        Debug.Log("fyinggggg");
+        SpawnBullet(muzzle.transform.position, CalculateAngle(muzzle));
     }
 
     private void FinishShooting()
@@ -82,4 +85,18 @@ public class Weapon : MonoBehaviour
         yield return new WaitForSeconds(weaponData.WeaponDelay);
         reloadCoroutine = false;
     }
+
+    private Quaternion CalculateAngle(GameObject calculatedObject)
+    {
+        float spread = UnityEngine.Random.Range(-weaponData.SpreadAngle, weaponData.SpreadAngle);
+        Quaternion spreadRotation = Quaternion.Euler(new Vector3(0, 0, spread));
+        return calculatedObject.transform.rotation * spreadRotation;
+    }
+
+    private void SpawnBullet(Vector3 position, Quaternion rotation)
+    {
+        var bullet = Instantiate(weaponData.BulletData.Prefab, position, rotation);
+        bullet.GetComponent<Bullet>().BulletData = weaponData.BulletData;
+    }
+    #endregion
 }

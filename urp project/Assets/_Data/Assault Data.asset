@@ -15,4 +15,6 @@ MonoBehaviour:
   <AmmoCapacity>k__BackingField: 30
   <BulletCountToSpawn>k__BackingField: 1
   <AutomaticFire>k__BackingField: 1
-  <WeaponDelay>k__BackingField: 0.5
+  <WeaponDelay>k__BackingField: 0.05
+  <SpreadAngle>k__BackingField: 5
+  <BulletData>k__BackingField: {fileID: 11400000, guid: 393b990170baa4931a25ad93e889db62, type: 2}
