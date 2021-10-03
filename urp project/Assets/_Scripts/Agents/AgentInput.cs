@@ -7,8 +7,11 @@ public class AgentInput : MonoBehaviour
 {
     [field: SerializeField] public UnityEvent<Vector2> OnMovementKeyPress { get; set; }
     [field: SerializeField] public UnityEvent<Vector2> OnPointerPositionChanged { get; set; }
+    [field: SerializeField] public UnityEvent OnFireButtonPressed { get; set; }
+    [field: SerializeField] public UnityEvent OnFireButtonReleased { get; set; }
 
     private Camera mainCamera;
+    private bool fireButtonDown;
 
     private void Awake()
     {
@@ -19,6 +22,7 @@ public class AgentInput : MonoBehaviour
     {
         GetMovementInput();
         GetPointerInput();
+        GetFireInput();
     }
 
     private void GetMovementInput()
@@ -32,5 +36,22 @@ public class AgentInput : MonoBehaviour
         mousePos.z = mainCamera.nearClipPlane;
         var mouseInWorldSpace = mainCamera.ScreenToWorldPoint(mousePos);
         OnPointerPositionChanged?.Invoke(mouseInWorldSpace);
+    }
+
+    private void GetFireInput()
+    {
+        if (Input.GetAxisRaw("Fire1") > 0)
+        {
+            if (!fireButtonDown)
+            {
+                fireButtonDown = true;
+                OnFireButtonPressed?.Invoke();
+            }
+        }
+        else if (fireButtonDown)
+        {
+            fireButtonDown = false;
+            OnFireButtonReleased?.Invoke();
+        }
     }
 }
