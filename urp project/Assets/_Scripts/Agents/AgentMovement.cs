@@ -4,7 +4,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D))]
 public class AgentMovement : MonoBehaviour
 {
-    [field: SerializeField] public MovementDataSO MovementData { get; protected set; }
+    [SerializeField] protected MovementDataSO movementData;
+
     [field: SerializeField] public UnityEvent<float> OnVelocityChanged { get; set; }
 
     protected Rigidbody2D rigidbody;
@@ -31,10 +32,10 @@ public class AgentMovement : MonoBehaviour
     private float CalculateSpeed(Vector2 moveInput)
     {
         if (moveInput.magnitude > 0)
-            currentSpeed += MovementData.Acceleration * Time.deltaTime;
+            currentSpeed += movementData.Acceleration * Time.deltaTime;
         else
-            currentSpeed -= MovementData.Deacceleration * Time.deltaTime;
+            currentSpeed -= movementData.Deacceleration * Time.deltaTime;
 
-        return Mathf.Clamp(currentSpeed, 0, MovementData.MaxSpeed);
+        return Mathf.Clamp(currentSpeed, 0, movementData.MaxSpeed);
     }
 }

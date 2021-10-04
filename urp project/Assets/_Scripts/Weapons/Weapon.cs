@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected WeaponDataSO weaponData;
     [SerializeField] protected int ammo;
     [SerializeField] protected bool reloadCoroutine = false;
+
     [field: SerializeField] public UnityEvent OnShoot { get; set; }
     [field: SerializeField] public UnityEvent OnShootNoAmmo { get; set; }
 

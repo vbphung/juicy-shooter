@@ -3,8 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class RegularBullet : Bullet
 {
-    protected Rigidbody2D rigidbody;
-
     public override BulletDataSO BulletData
     {
         get => base.BulletData;
@@ -16,6 +14,8 @@ public class RegularBullet : Bullet
         }
     }
 
+    protected Rigidbody2D rigidbody;
+
     private void FixedUpdate()
     {
         if (rigidbody != null && BulletData != null)
@@ -24,11 +24,20 @@ public class RegularBullet : Bullet
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+            HitObstacle();
+        else if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            HitEnemy();
+        Destroy(gameObject);
     }
 
     private void HitObstacle()
     {
+        Debug.Log("hit");
+    }
 
+    private void HitEnemy()
+    {
+        Debug.Log("hit enemy");
     }
 }
