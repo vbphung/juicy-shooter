@@ -8,18 +8,18 @@ public class AgentMovement : MonoBehaviour
 
     [field: SerializeField] public UnityEvent<float> OnVelocityChanged { get; set; }
 
-    protected Rigidbody2D rigidbody;
+    protected Rigidbody2D myRigidbody;
     protected float currentSpeed = 0;
     protected Vector2 currentDirection = new Vector2(0, 0);
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        myRigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
-        rigidbody.velocity = currentDirection.normalized * currentSpeed;
+        myRigidbody.velocity = currentDirection.normalized * currentSpeed;
         OnVelocityChanged?.Invoke(currentSpeed);
     }
 

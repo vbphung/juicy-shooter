@@ -5,20 +5,20 @@ public class WeaponRenderer : MonoBehaviour
 {
     [SerializeField] protected int playerSortingOrder = 0;
 
-    protected SpriteRenderer renderer;
+    protected SpriteRenderer myRenderer;
 
     private void Awake()
     {
-        renderer = GetComponent<SpriteRenderer>();
+        myRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void FlipSprite(bool flip)
     {
-        renderer.flipY = flip;
+        myRenderer.flipY = flip;
     }
 
     public void RenderBehindHead(bool behind)
     {
-        renderer.sortingOrder = playerSortingOrder + (behind ? -1 : 1);
+        myRenderer.sortingOrder = playerSortingOrder + (behind ? -1 : 1);
     }
 }

@@ -9,17 +9,17 @@ public class RegularBullet : Bullet
         set
         {
             base.BulletData = value;
-            rigidbody = GetComponent<Rigidbody2D>();
-            rigidbody.drag = BulletData.Friction;
+            myRigidbody = GetComponent<Rigidbody2D>();
+            myRigidbody.drag = BulletData.Friction;
         }
     }
 
-    protected Rigidbody2D rigidbody;
+    protected Rigidbody2D myRigidbody;
 
     private void FixedUpdate()
     {
-        if (rigidbody != null && BulletData != null)
-            rigidbody.MovePosition(transform.position + BulletData.Speed * transform.right * Time.fixedDeltaTime);
+        if (myRigidbody != null && BulletData != null)
+            myRigidbody.MovePosition(transform.position + BulletData.Speed * transform.right * Time.fixedDeltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class AIDecision : MonoBehaviour
+public abstract class AIAction : MonoBehaviour
 {
     protected AIActionData aIActionData;
     protected AIMovementData aIMovementData;
@@ -13,5 +13,5 @@ public abstract class AIDecision : MonoBehaviour
         enemyBrain = transform.root.GetComponent<EnemyBrain>();
     }
 
-    public abstract bool MakeDecision();
+    public abstract void TakeAction();
 }
