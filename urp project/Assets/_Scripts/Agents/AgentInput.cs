@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AgentInput : MonoBehaviour
+public class AgentInput : MonoBehaviour, IAgentInput
 {
     [field: SerializeField] public UnityEvent<Vector2> OnMovementKeyPress { get; set; }
     [field: SerializeField] public UnityEvent<Vector2> OnPointerPositionChanged { get; set; }

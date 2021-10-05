@@ -3,13 +3,20 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour, IHittable
+public class Enemy : MonoBehaviour, IHittable, IAgent
 {
     [SerializeField] [Range(0, 10)] float timeToDie;
+    [SerializeField] EnemyDataSO enemyData;
 
-    [field: SerializeField] public float Health { get; private set; }
     [field: SerializeField] public UnityEvent OnGetHit { get; set; }
     [field: SerializeField] public UnityEvent OnDie { get; set; }
+
+    public float Health { get; set; }
+
+    private void Start()
+    {
+        Health = enemyData.MaxHealth;
+    }
 
     public void GetHit(float damage, GameObject damageDealer)
     {
