@@ -7,11 +7,20 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 {
     [SerializeField] [Range(0, 10)] float timeToDie;
     [SerializeField] EnemyDataSO enemyData;
+    [SerializeField] EnemyAttack enemyAttack;
 
     [field: SerializeField] public UnityEvent OnGetHit { get; set; }
     [field: SerializeField] public UnityEvent OnDie { get; set; }
 
     public float Health { get; set; }
+
+    private bool dead = false;
+
+    private void Awake()
+    {
+        if (enemyAttack == null)
+            enemyAttack = GetComponent<EnemyAttack>();
+    }
 
     private void Start()
     {
@@ -20,20 +29,30 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     public void GetHit(float damage, GameObject damageDealer)
     {
-        Health -= damage;
-
-        if (Health <= 0)
+        if (!dead)
         {
-            OnDie?.Invoke();
-            StartCoroutine(WaitToDie());
+            Health -= damage;
+
+            if (Health <= 0)
+            {
+                dead = true;
+                OnDie?.Invoke();
+                StartCoroutine(WaitToDie());
+            }
+            else
+                OnGetHit?.Invoke();
         }
-        else
-            OnGetHit?.Invoke();
     }
 
     private IEnumerator WaitToDie()
     {
         yield return new WaitForSeconds(timeToDie);
         Destroy(gameObject);
+    }
+
+    public void PerformAttack()
+    {
+        if (!dead)
+            enemyAttack.Attack(enemyData.Damage);
     }
 }
