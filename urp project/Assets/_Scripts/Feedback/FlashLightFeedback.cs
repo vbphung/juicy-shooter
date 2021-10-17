@@ -19,7 +19,6 @@ public class FlashLightFeedback : Feedback
     {
         StopAllCoroutines();
         lightTarget.enabled = defaultState;
-
     }
 
     private IEnumerator ToggleLight(float time, bool result, Action finishCallback = null)
