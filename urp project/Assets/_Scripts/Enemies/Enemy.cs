@@ -37,16 +37,14 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
             {
                 dead = true;
                 OnDie?.Invoke();
-                StartCoroutine(WaitToDie());
             }
             else
                 OnGetHit?.Invoke();
         }
     }
 
-    private IEnumerator WaitToDie()
+    public void Die()
     {
-        yield return new WaitForSeconds(timeToDie);
         Destroy(gameObject);
     }
 

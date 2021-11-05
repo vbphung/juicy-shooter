@@ -9,8 +9,6 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     public float Health { get; set; }
 
-    private bool dead = false;
-
     private void Awake()
     {
         Health = maxHealth;
