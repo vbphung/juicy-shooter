@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Friction>k__BackingField: 0.5
   <Speed>k__BackingField: 20
-  <Damage>k__BackingField: 30
+  <Damage>k__BackingField: 5
   <KnockBackPower>k__BackingField: 6
   <KnockBackDelay>k__BackingField: 0.1
   <Prefab>k__BackingField: {fileID: 2692561747757418922, guid: dbea6bddce2dc4af2a551e14485644c8, type: 3}
-  <ImpactObstaclePrefab>k__BackingField: {fileID: 0}
-  <ImpactEnemyPrefab>k__BackingField: {fileID: 0}
+  <ImpactObstaclePrefab>k__BackingField: {fileID: 3606778312850583839, guid: dce5f06193b13d645a1cc7b5165a01ae, type: 3}
+  <ImpactEnemyPrefab>k__BackingField: {fileID: 8795735976852176671, guid: 140d87a90ef5a2e4aa36bde2fe096463, type: 3}
   <Bounce>k__BackingField: 0
   <GoThroughHittable>k__BackingField: 0
   <IsRaycast>k__BackingField: 0

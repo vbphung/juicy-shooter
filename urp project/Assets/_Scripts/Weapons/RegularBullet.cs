@@ -28,19 +28,22 @@ public class RegularBullet : Bullet
         hittable?.GetHit(BulletData.Damage, null);
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-            HitObstacle();
+            HitObstacle(collider);
         else if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-            HitEnemy();
+            HitEnemy(collider);
         Destroy(gameObject);
     }
 
-    private void HitObstacle()
+    private void HitObstacle(Collider2D collider)
     {
-        Debug.Log("hit");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right);
+        if (hit.collider != null)
+            Instantiate(BulletData.ImpactObstaclePrefab, hit.point, Quaternion.identity);
     }
 
-    private void HitEnemy()
+    private void HitEnemy(Collider2D collider)
     {
-        Debug.Log("hit enemy");
+        Vector2 randomOffset = Random.insideUnitCircle * 0.5f;
+        Instantiate(BulletData.ImpactEnemyPrefab, collider.transform.position + (Vector3)randomOffset, Quaternion.identity);
     }
 }

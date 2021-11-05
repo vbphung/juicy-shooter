@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aeaed1b785b743e0955b6745ea12e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Decisions>k__BackingField: []
   <PositiveResult>k__BackingField: {fileID: 0}
   <NegativeResult>k__BackingField: {fileID: 4922533190118949868}
 --- !u!1 &3108426723778714246
@@ -247,8 +246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aeaed1b785b743e0955b6745ea12e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Decisions>k__BackingField:
-  - {fileID: 2043448418}
   <PositiveResult>k__BackingField: {fileID: 0}
   <NegativeResult>k__BackingField: {fileID: 2743213397076913415}
 --- !u!114 &2043448418
@@ -369,9 +366,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aeaed1b785b743e0955b6745ea12e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Decisions>k__BackingField: []
   <PositiveResult>k__BackingField: {fileID: 4496216183682745380}
   <NegativeResult>k__BackingField: {fileID: 0}
+--- !u!1 &6412487831982650582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1460307773786944669}
+  - component: {fileID: 2190874550290513431}
+  - component: {fileID: 249993801793641164}
+  m_Layer: 0
+  m_Name: Hit Feedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1460307773786944669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412487831982650582}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7381922378020374330}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2190874550290513431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412487831982650582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae224552854b40ba8313386da252725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feedbackToPlay:
+  - {fileID: 249993801793641164}
+--- !u!114 &249993801793641164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412487831982650582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a117a95a9fc914f46968f43f235a7811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modelRenderer: {fileID: 7381922378513254868}
+  flashTime: 0.1
+  flashMaterial: {fileID: 2100000, guid: a524d492feef62e458905cd3d8cdb53b, type: 2}
 --- !u!1 &7050388740250285904
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,8 +473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aeaed1b785b743e0955b6745ea12e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Decisions>k__BackingField:
-  - {fileID: 653610868}
   <PositiveResult>k__BackingField: {fileID: 4922533190118949868}
   <NegativeResult>k__BackingField: {fileID: 0}
 --- !u!114 &653610868
@@ -470,6 +525,7 @@ Transform:
   - {fileID: 1581692183862044594}
   - {fileID: 8325802581520557980}
   - {fileID: 8314361809499309101}
+  - {fileID: 1460307773786944669}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -552,12 +608,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToDie: 3
   enemyData: {fileID: 11400000, guid: 7e77b639d8cb140b4915df8ac6df6eda, type: 2}
+  enemyAttack: {fileID: 0}
   <OnGetHit>k__BackingField:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8325802581520557982}
         m_TargetAssemblyTypeName: AgentSounds, Assembly-CSharp
         m_MethodName: PlayHitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2190874550290513431}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedback
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -711,7 +780,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 13906a0a656ac24498a1ebf4f849d8a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -926,7 +995,7 @@ MonoBehaviour:
   - {x: -0.19442582, y: 0.38198492, z: 0}
   m_ShapePathHash: 1088057419
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1418
+  m_InstanceId: 31662
 --- !u!1 &7906859106837570490
 GameObject:
   m_ObjectHideFlags: 0
