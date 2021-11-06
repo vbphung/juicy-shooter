@@ -58,8 +58,8 @@ Material:
     - _IsHit: 0
     - _NoiseScale: 20
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DissolveColor: {r: 1, g: 0.5020985, b: 0.2207547, a: 0}
+    - _Color: {r: 11.984314, g: 0.4392157, b: 0.4392157, a: 1}
+    - _DissolveColor: {r: 8, g: 4.0156865, b: 1.7568628, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

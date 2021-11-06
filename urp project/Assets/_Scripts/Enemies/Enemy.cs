@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour, IHittable, IAgent
+public class Enemy : MonoBehaviour, IHittable, IAgent, IKnockBack
 {
     [SerializeField] [Range(0, 10)] float timeToDie;
     [SerializeField] EnemyDataSO enemyData;
@@ -15,11 +15,14 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     public float Health { get; set; }
 
     private bool dead = false;
+    private AgentMovement agentMovement;
 
     private void Awake()
     {
         if (enemyAttack == null)
             enemyAttack = GetComponent<EnemyAttack>();
+
+        agentMovement = GetComponent<AgentMovement>();
     }
 
     private void Start()
@@ -52,5 +55,10 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     {
         if (!dead)
             enemyAttack.Attack(enemyData.Damage);
+    }
+
+    public void KnockBack(Vector2 direction, float power, float duration)
+    {
+        agentMovement.KnockBack(direction, power, duration);
     }
 }

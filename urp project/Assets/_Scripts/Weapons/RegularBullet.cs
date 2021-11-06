@@ -15,6 +15,7 @@ public class RegularBullet : Bullet
     }
 
     protected Rigidbody2D myRigidbody;
+    private bool exploded = false;
 
     private void FixedUpdate()
     {
@@ -24,14 +25,19 @@ public class RegularBullet : Bullet
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        var hittable = collider.GetComponent<IHittable>();
-        hittable?.GetHit(BulletData.Damage, null);
+        if (!exploded)
+        {
+            exploded = true;
 
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-            HitObstacle(collider);
-        else if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-            HitEnemy(collider);
-        Destroy(gameObject);
+            var hittable = collider.GetComponent<IHittable>();
+            hittable?.GetHit(BulletData.Damage, null);
+
+            if (collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+                HitObstacle(collider);
+            else if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                HitEnemy(collider);
+            Destroy(gameObject);
+        }
     }
 
     private void HitObstacle(Collider2D collider)
@@ -43,6 +49,9 @@ public class RegularBullet : Bullet
 
     private void HitEnemy(Collider2D collider)
     {
+        var knockBack = collider.GetComponent<IKnockBack>();
+        knockBack.KnockBack(transform.right, BulletData.KnockBackPower, BulletData.KnockBackDelay);
+
         Vector2 randomOffset = Random.insideUnitCircle * 0.5f;
         Instantiate(BulletData.ImpactEnemyPrefab, collider.transform.position + (Vector3)randomOffset, Quaternion.identity);
     }

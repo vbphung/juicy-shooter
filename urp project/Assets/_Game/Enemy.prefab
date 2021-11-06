@@ -421,6 +421,7 @@ GameObject:
   - component: {fileID: 1460307773786944669}
   - component: {fileID: 2190874550290513431}
   - component: {fileID: 249993801793641164}
+  - component: {fileID: 7758831806497608184}
   m_Layer: 0
   m_Name: Hit Feedback
   m_TagString: Untagged
@@ -456,6 +457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   feedbackToPlay:
   - {fileID: 249993801793641164}
+  - {fileID: 7758831806497608184}
 --- !u!114 &249993801793641164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,6 +473,21 @@ MonoBehaviour:
   modelRenderer: {fileID: 7381922378513254868}
   flashTime: 0.1
   flashMaterial: {fileID: 2100000, guid: 13906a0a656ac24498a1ebf4f849d8a6, type: 2}
+--- !u!114 &7758831806497608184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412487831982650582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de56c975bac953145bf340fcdb1a857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freezeTimeDelay: 0.001
+  unfreezeTimeDelay: 0.02
+  freezeTime: 0.2
 --- !u!1 &7050388740250285904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,7 +1081,7 @@ MonoBehaviour:
   - {x: -0.19442582, y: 0.38198492, z: 0}
   m_ShapePathHash: 1088057419
   m_Mesh: {fileID: 0}
-  m_InstanceId: 53890
+  m_InstanceId: 32834
 --- !u!1 &7906859106837570490
 GameObject:
   m_ObjectHideFlags: 0

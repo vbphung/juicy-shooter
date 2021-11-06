@@ -9,6 +9,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     public float Health { get; set; }
 
+    private bool isDead = false;
+
     private void Awake()
     {
         Health = maxHealth;
@@ -16,10 +18,16 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     public void GetHit(float damage, GameObject damageDealer)
     {
-        Health -= damage;
-        if (Health <= 0)
-            OnDie?.Invoke();
-        else
-            OnGetHit?.Invoke();
+        if (!isDead)
+        {
+            Health -= damage;
+            if (Health <= 0)
+            {
+                isDead = true;
+                OnDie?.Invoke();
+            }
+            else
+                OnGetHit?.Invoke();
+        }
     }
 }

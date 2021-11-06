@@ -21,4 +21,9 @@ public class AgentAnimation : MonoBehaviour
     {
         SetWalkAnimation(speed != 0);
     }
+
+    public void PlayDeadAnimation()
+    {
+        animator.SetTrigger("dead");
+    }
 }
