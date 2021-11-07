@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class BulletShellFeedback : ObjectPool
+public class BulletShellGenerator : ObjectPool
 {
     [SerializeField] private float flyDuration;
     [SerializeField] private float flyStrength;
@@ -22,5 +22,7 @@ public class BulletShellFeedback : ObjectPool
         randomDirection = randomDirection.y > 0 ? new Vector2(randomDirection.x, -randomDirection.y) : randomDirection;
 
         var moveDirection = (Vector2)transform.position + randomDirection * flyStrength;
+        shell.transform.DOMove(moveDirection, flyDuration).OnComplete(() => shell.GetComponent<AudioSource>().Play());
+        shell.transform.DORotate(new Vector3(0, 0, Random.Range(0f, 360f)), flyDuration);
     }
 }

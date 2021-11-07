@@ -499,6 +499,7 @@ GameObject:
   - component: {fileID: 5719923403798575225}
   - component: {fileID: 6970167963314752293}
   - component: {fileID: 653610868}
+  - component: {fileID: 7923348666622495016}
   m_Layer: 8
   m_Name: Transition Chase
   m_TagString: Untagged
@@ -547,6 +548,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Distance>k__BackingField: 7
+--- !u!114 &7923348666622495016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7050388740250285904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b42136051bc6ef14084c715c3beba97e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 7
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 2560
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  onPlayerSpotted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8325802581520557982}
+        m_TargetAssemblyTypeName: AgentSounds, Assembly-CSharp
+        m_MethodName: PlayVoiceSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7381922378020374310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,7 +1116,7 @@ MonoBehaviour:
   - {x: -0.19442582, y: 0.38198492, z: 0}
   m_ShapePathHash: 1088057419
   m_Mesh: {fileID: 0}
-  m_InstanceId: 32834
+  m_InstanceId: 44372
 --- !u!1 &7906859106837570490
 GameObject:
   m_ObjectHideFlags: 0
