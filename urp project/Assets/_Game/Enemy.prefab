@@ -563,10 +563,7 @@ MonoBehaviour:
   distance: 7
   raycastMask:
     serializedVersion: 2
-    m_Bits: 2560
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 640
   onPlayerSpotted:
     m_PersistentCalls:
       m_Calls:
@@ -622,6 +619,7 @@ Transform:
   - {fileID: 8314361809499309101}
   - {fileID: 1460307773786944669}
   - {fileID: 3740267998423544439}
+  - {fileID: 4280608736668964054}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -762,6 +760,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5954136278795848421}
         m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
         m_MethodName: PlayFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5044669003684198910}
+        m_TargetAssemblyTypeName: ItemDropper, Assembly-CSharp
+        m_MethodName: DropItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1116,7 +1126,7 @@ MonoBehaviour:
   - {x: -0.19442582, y: 0.38198492, z: 0}
   m_ShapePathHash: 1088057419
   m_Mesh: {fileID: 0}
-  m_InstanceId: 44372
+  m_InstanceId: 34688
 --- !u!1 &7906859106837570490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1188,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 035c8a35c19d842a89bba6eeb5170c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8153828945106817960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4280608736668964054}
+  - component: {fileID: 5044669003684198910}
+  m_Layer: 0
+  m_Name: Item Dropper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4280608736668964054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8153828945106817960}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7381922378020374330}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5044669003684198910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8153828945106817960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf937d9aff1fe09488252b7b0bec259a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItems:
+  - rate: 0.5
+    itemPrefab: {fileID: 6966330359609067190, guid: 4eca722207ba50d42a7ed077268d1c51, type: 3}
+  - rate: 0.25
+    itemPrefab: {fileID: 1848221273540854037, guid: 1824bef47e06d894591636d38edc5ec3, type: 3}
+  dropChance: 0.6
 --- !u!1 &8325802581520557953
 GameObject:
   m_ObjectHideFlags: 0

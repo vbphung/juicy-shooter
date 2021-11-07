@@ -13,12 +13,11 @@ public class LookDecision : AIDecision
         var direction = enemyBrain.Target.transform.position - transform.position;
         var hit = Physics2D.Raycast(transform.position, direction, distance, raycastMask);
 
-        if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Player Movement Collider"))
+        if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             onPlayerSpotted?.Invoke();
             return true;
         }
-
         return false;
     }
 

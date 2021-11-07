@@ -9,11 +9,13 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     public float Health { get; set; }
 
+    private PlayerWeapon playerWeapon;
     private bool isDead = false;
 
     private void Awake()
     {
         Health = maxHealth;
+        playerWeapon = GetComponentInChildren<PlayerWeapon>();
     }
 
     public void GetHit(float damage, GameObject damageDealer)
@@ -28,6 +30,30 @@ public class Player : MonoBehaviour, IAgent, IHittable
             }
             else
                 OnGetHit?.Invoke();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Resource"))
+        {
+            var resource = collider.gameObject.GetComponent<Resource>();
+            if (resource != null)
+                switch (resource.ResourceData.Type)
+                {
+                    case ResourceType.Ammo:
+                        if (!playerWeapon.FullAmmo)
+                        {
+                            playerWeapon.ReloadAmmo(resource.ResourceData.Amount);
+                            resource.PickUp();
+                        }
+
+                        break;
+                    case ResourceType.Health:
+                        Health = Mathf.Clamp(Health + resource.ResourceData.Amount, 0, maxHealth);
+                        resource.PickUp();
+                        break;
+                }
         }
     }
 }
